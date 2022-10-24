@@ -1,0 +1,206 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
+ #logoAwal{
+    background-image: url("assets/img/headerbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: max-content;
+    position: relative;
+ }
+ #nav{
+    display: flex;
+    background-image: linear-gradient(to right,rgba(148, 204, 226, 0.15),rgba(148, 204, 226, 0.25),rgba(148, 204, 226, 0.35),rgba(148, 204, 226, 0.45),rgba(148, 204, 226, 0.55),rgba(148, 204, 226, 0.65), rgba(148, 204, 226, 0.75), rgba(148, 204, 226, 0.85));
+ }
+ 
+
+ .navbar-nav>li:hover>a{
+    color: rgba(148, 204, 226);
+    background-color: rgb(155, 155, 155);
+ }
+
+ .tataCara{
+   margin: 50px 0 50px 0;
+ }
+
+ .hubungiKami{
+   background-image: url("assets/img/blueSky.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   text-shadow: -1px 0 lightgrey, 0 1px lightgrey, 1px 0 lightgrey, 0 -1px lightgrey;
+   text-align: center;
+   margin: 0 0 -4px 0;
+   font:700 20px/28px 'Times New Roman', sans-serif;
+ }
+
+ .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+   font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+   z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+.video{
+   margin-left: 4%;
+}
+
+ #carouselHero .carousel-item img {  
+   object-fit: cover;
+   object-position: center;
+   overflow: hidden;
+   height:80vh;
+ }
+
+ div {
+   display: block;
+}
+
+
+
+.hubungiKami .kataMutiara{
+   margin-bottom:3px;
+   font:700 18px/22px 'Open Sans', sans-serif;
+   letter-spacing:.5px; text-transform:none;
+}
+
+.noTelp{
+   text-align: center;
+   margin-bottom:3px;
+   font:700 20px/28px 'Times New Roman', sans-serif;
+   font-size: 4vh;
+   letter-spacing:.5px; text-transform:none;
+}
+
+
+.tata h3 {
+   margin-bottom:3px;
+   font:700 16px/22px 'Open Sans', sans-serif;
+   letter-spacing:.5px; text-transform:none;
+}
+
+.tataSmall h3 {
+   margin-bottom:3px;
+   font:700 16px/22px 'Open Sans', sans-serif;
+   letter-spacing:.5px; text-transform:none;
+}
+
+.tata{
+   text-align: justify;
+}
+
+.tata h3{
+   text-align: center;
+}
+.tata i{
+   margin-left: 50%;
+}
+
+.tataSmall{
+   text-align: center;
+   display: none;
+}
+
+.next{
+   position: relative;
+}
+.next i{
+   margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.judulProduk{
+   height: 150px;
+   position: relative;
+   background-image: url("assets/img/blueSky.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   margin-bottom: 25px;
+}
+.judulProduk>h1{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+  font-family: Georgia, serif;
+
+}
+
+
+.tabelProd{
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 25px;
+   margin-bottom: 25px;
+}
+
+.tabelProd tbody tr td:nth-child(even){
+   text-align: center;
+   
+}
+
+.produkDetail div h3{
+   text-align: center;
+}
+
+.produkDetail div a{
+   text-decoration: none;
+   color: black;
+}
+
+@media screen and (max-width: 1100px) {
+   .tabelProd tbody tr td:nth-child(even) img{
+      text-align: center;
+      margin: auto;
+      display: flex;
+   }
+}
+@media screen and (max-width: 575px) {
+   
+
+   .video iframe{
+      width: 100%;
+   }
+   .video{
+      margin-left: 0;
+   }
+   .nextBot{
+      display: block;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+   }
+   .next{
+      display: none;
+   }
+   .tata{
+      display: none;
+   }
+   .tataSmall{
+      display: block;
+   }
+ }
+
+ .carousel-inner div div h5{
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
+ 
+ .carousel-inner div div p{
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
