@@ -35,7 +35,7 @@
    font:700 20px/28px 'Times New Roman', sans-serif;
  }
 
- .float{
+ .floatWhatsapp{
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -44,6 +44,22 @@
 	background-color:#25d366;
 	color:#FFF;
 	border-radius:50px;
+	text-align:center;
+   font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+   z-index:100;
+}
+
+.floatAdd{
+   position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#ffffff;
+	color:rgb(0, 0, 0);
+	border-radius:50px;
+   border: 1px solid lightgrey;
 	text-align:center;
    font-size:30px;
 	box-shadow: 2px 2px 3px #999;

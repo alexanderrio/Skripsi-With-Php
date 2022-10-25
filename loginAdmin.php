@@ -18,7 +18,7 @@
 
 		if(mysqli_num_rows($result) > 0){
 			$_SESSION['id'] = $data['id'];
-			header("location: produk.php");
+			header("location: peti.php");
             ECHO "data Sukses diambil";
 			
 			}

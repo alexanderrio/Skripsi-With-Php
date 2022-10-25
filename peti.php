@@ -26,6 +26,7 @@
 	
 	
 	include_once("header.php");
+	include_once("assets/small/add.php");
 ?>
 <html lang="en">
 <head>
@@ -36,12 +37,46 @@
     
     <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Produk</title>
+    <title>Peti</title>
 </head>
 <body>
     <div class="judulProduk">
-        <H1>Produk</H1>
-      </div>
+        <H1>Peti</H1>
+	</div>
+
+
+	<div class="container">
+	<div class="col-12 row" style="margin: 50px 0;"></div>
+	<div class="col-12 row">
+		<div class="col-4">
+			<h4>PETI UKIR</h4>
+			<p>_______<br>
+				Carved Coffin</p>
+			<p>Material: Cedar</p>
+		</div>
+		<div class="col-6 offset-2">
+			<img width="500" height="300" src="assets/img/tw.jpg" 
+			class="" alt="">
+		</div>
+	</div>
+	<div class="col-12 row" style="margin: 50px 0; border-bottom: 2px solid black;">
+	</div>
+	<div class="col-12 row">
+		<div class="col-4">
+			<h4>PETI UKIR</h4>
+			<p>_________<br>
+				Carved Coffin</p>
+			<p>Material: Jati</p>
+		</div>
+		<div class="col-6 offset-2">
+			<img width="500" height="300" src="assets/img/146865_620.jpg" 
+			class="" alt="">
+		</div>
+	</div>
+	<div class="col-12 row" style="margin: 50px 0; border-bottom: 2px solid black;">
+	</div>
+
+	</div>
 
 
 <?php
