@@ -1,42 +1,35 @@
+<?php
+	session_start();
+	include_once("commons/connection.php");
+	
+	$con = createConnection();
+	if (!isset($_SESSION['id'])) {
+  header("Location: loginAdmin.php");
+ }
+	
+	
+
+	$sql = "SELECT * FROM coffins";
+	$result = mysqli_query($con, $sql);
+	
+	
+	include_once("commons/header.php");
+	include_once("../assets/small/addLayanan.php");
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link href="styles.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         
-        <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/css/all.css">
+        <link rel="stylesheet" href="../assets/fontawesome-free-6.2.0-web/css/all.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Layanan</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg" id="nav">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="assets/img/LogoArimatea.png" height="50px" width="100px"/></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link"  href="Arimatea.html">Home</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link active" href="Produk.html">Produk</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Kontak</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">FAQ</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <a href="https://api.whatsapp.com/send?phone=6282135656165" class="floatWhatsapp" target="_blank">
-            <i class="fa-brands fa-whatsapp my-float"></i>
-          </a>
+       
           <div class="judulProduk">
             <H1>Layanan</H1>
           </div>
@@ -114,5 +107,10 @@
               </tr>
             </tbody>
           </table>
-    </body>
-</html>
+
+
+
+<?php
+    include_once("commons/footer.php");
+
+?>

@@ -1,5 +1,5 @@
 <?php
-	include_once('connection.php');
+	include_once('commons/connection.php');
 	session_start();
 	$con = createConnection();
 	
@@ -18,7 +18,7 @@
 
 		if(mysqli_num_rows($result) > 0){
 			$_SESSION['id'] = $data['id'];
-			header("location: peti.php");
+			header("location: produk.php");
             ECHO "data Sukses diambil";
 			
 			}
