@@ -9,7 +9,7 @@
 	
 	
 
-	$sql = "SELECT * FROM coffins";
+	$sql = "SELECT * FROM services";
 	$result = mysqli_query($con, $sql);
 	
 	
@@ -29,11 +29,38 @@
         <title>Layanan</title>
     </head>
     <body>
-       
-          <div class="judulProduk">
-            <H1>Layanan</H1>
-          </div>
+        <div class="judulProduk">
+          <H1>Layanan</H1>
+        </div>
         <table class="table table-striped tabelProd" style="width: 58%;">
+            <tbody>
+        <?php
+          while ($hasil = mysqli_fetch_assoc($result)) {
+        ?>
+            <div class="col-12 row" style="margin: 50px 0;"></div>
+            <div class="col-12 row">
+            <div class="col-4">
+        <?php
+            echo '<tr><td><P><strong>'.$hasil['judul'].'</strong><br>';
+            echo ''.$hasil['deskripsi'].'</p>';
+            if($hasil['path1'] != ''){
+              echo '<td style="width:60%"><img alt="" src="'.$hasil['path1'].'" style="height:200px; width:300px">&nbsp;';
+            }
+            if($hasil['path2'] != ''){
+              echo '<img alt="" src="'.$hasil['path2'].'" style="height:200px; width:300px">';
+            }
+            echo '</td></tr>';
+          }
+        ?>
+            <!-- <form action="delete.php" class="hapusPeti" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="id" id="namaPeti" value="<?php echo $hasil['id']; ?>">
+              <input type="hidden" name="path" id="path" value="<?php echo $hasil['path']; ?>">
+              <button name="hapusPeti" type="submit" class="btn btn-danger">Delete</button>
+                </form> -->
+            
+                </tbody>
+          </table>
+          <table class="table table-striped tabelProd" style="width: 58%;">
             <tbody>
               <tr>
                 <td>
