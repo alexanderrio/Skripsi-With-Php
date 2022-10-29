@@ -60,7 +60,7 @@
             
                 </tbody>
           </table>
-          <table class="table table-striped tabelProd" style="width: 58%;">
+          <table class="table table-striped tabelProd" style="width: 70%;">
             <tbody>
               <tr>
                 <td>
@@ -69,6 +69,7 @@
                   </P>
                 </td>
                 <td rowspan="2" style="width:60%"><img alt="" src="assets/img/ambulanArimatea.jpeg" style="height:200px; width:300px"></td>
+                <td>test</td>
               </tr>
               <tr>
                 <td>

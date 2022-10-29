@@ -47,11 +47,15 @@
 			echo '<p>'.$hasil['deskripsi'].'</p>';
 	?>
 			<form action="delete.php" class="hapusPeti" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="id" id="namaPeti" value="<?php echo $hasil['id']; ?>">
+				<input type="hidden" name="id" id="idPeti" value="<?php echo $hasil['id']; ?>">
 				<input type="hidden" name="path" id="path" value="<?php echo $hasil['path']; ?>">
 				<button name="hapusPeti" type="submit" class="btn btn-danger">Delete</button>
         	</form>
-			
+			<form action="editPeti.php" class="editPeti" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="id" id="idPeti" value="<?php echo $hasil['id']; ?>">
+				<input type="hidden" name="path" id="path" value="<?php echo $hasil['path']; ?>">
+				<button name="editPeti" type="submit" class="btn btn-success">Edit</button>
+        	</form>
 			</div>
 			<div class="col-6 offset-2">
 	<?php

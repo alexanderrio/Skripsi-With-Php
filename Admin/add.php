@@ -14,10 +14,6 @@ if(isset($_POST["tambahPeti"])) {
   $check = getimagesize($_FILES["gambar"]["tmp_name"]);
   if($check !== false) {
     $uploadOk = 1;
-    if (file_exists($path)) {
-      echo "maaf gambar sudah ada";
-      $uploadOk = 0;
-    }
     if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
       echo "Maaf tipe data gambar tidak dapat diterima";
       $uploadOk = 0;
@@ -27,12 +23,18 @@ if(isset($_POST["tambahPeti"])) {
     $uploadOk = 0;
   }
 
+  if($_POST['bahanPeti'] == null){
+    $bahanPeti = '';
+  }
+  if($_POST['deskripsi'] == null){
+    $deskripsi = '';
+  }
 
   if ($uploadOk == 0) {
     echo "Maaf File anda tidak dapat terupload";
   } else {
     if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $path)) {
-      $sql = "INSERT INTO coffins VALUES('','".$_POST['namaPeti']."','".$_POST['bahanPeti']."','".$_POST['deskripsi']."','".$path."')";
+      $sql = "INSERT INTO coffins VALUES('','".$_POST['namaPeti']."','".$bahanPeti."','".$deskripsi."','".$path."')";
       $hasil = mysqli_query($con,$sql);
     }
 }
