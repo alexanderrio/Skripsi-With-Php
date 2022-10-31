@@ -43,7 +43,6 @@ if(isset($_POST["tambahPeti"])) {
 if(isset($_POST["tambahLayanan"])) {
   $target_dir = "../assets/img/";
   $uploadOk = 1;
-  
   $path1 = $target_dir . basename($_FILES["gambar1"]["name"]);
   $path2 = $target_dir . basename($_FILES["gambar2"]["name"]);
   if($_FILES["gambar1"]["tmp_name"] != null){

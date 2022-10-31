@@ -12,39 +12,56 @@
 	    $result = mysqli_query($con, $sql);
     }
     if(isset($_POST['cancel'])){
-        header("Location: peti.php");
+        header("Location: service.php");
     }
 
-    if(isset($_POST['simpanPeti'])){
-        $sql = "SELECT * FROM coffins where id = '".$_POST['id']."'";
+    if(isset($_POST['simpanLayanan'])){
+        $sql = "SELECT * FROM services where id = '".$_POST['id']."'";
 	    $result = mysqli_query($con, $sql);
         $target_dir = "../assets/img/";
         $uploadOk = 1;
-        $path = $target_dir . basename($_FILES["gambar"]["name"]);
-        if($_FILES["gambar"]["tmp_name"] != null){
-            $fileType = strtolower(pathinfo($path,PATHINFO_EXTENSION));
-            $check = getimagesize($_FILES["gambar"]["tmp_name"]);
+        $path1 = $target_dir . basename($_FILES["gambar1"]["name"]);
+        $path2 = $target_dir . basename($_FILES["gambar2"]["name"]);
+        if($_FILES["gambar1"]["tmp_name"] != null){
+            $fileType1 = strtolower(pathinfo($path1,PATHINFO_EXTENSION));
+            $check = getimagesize($_FILES["gambar1"]["tmp_name"]);
             if($check !== false) {
-                $uploadOk = 1;
-                if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
-                    echo "Maaf tipe data gambar tidak dapat diterima";
-                    $uploadOk = 0;
-                }
-            } else {
-                echo "File is not an image.";
+            $uploadOk = 1;
+            if($fileType1 != "jpg" && $fileType1 != "png" && $fileType1 != "jpeg" && $fileType1 != "gif" ) {
+                echo "Maaf tipe data gambar 1 tidak dapat diterima";
                 $uploadOk = 0;
             }
+            } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+            }
         }else{
-            $path='';
+            $path1='';
+        }
+        if($_FILES["gambar2"]["tmp_name"] != null){
+            $fileType2 = strtolower(pathinfo($path2,PATHINFO_EXTENSION));
+            $check1 = getimagesize($_FILES["gambar2"]["tmp_name"]);
+            if($check1 !== false) {
+            $uploadOk = 1;
+            if($fileType2 != "jpg" && $fileType2 != "png" && $fileType2 != "jpeg" && $fileType2 != "gif" ) {
+                echo "Maaf tipe data gambar 2 tidak dapat diterima";
+                $uploadOk = 0;
+            }
+            } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+            }
+        }else{
+            $path2 ='';
         }
 
-        if($_POST['bahanPeti'] == null){
-            $bahanPeti = '';
+        if($_POST['judul'] == null){
+            $judul = $_POST['judulLama'];
         }else{
-            $bahanPeti = $_POST['bahanPeti'];
+            $judul = $_POST['judul'];
         }
         if($_POST['deskripsi'] == null){
-            $deskripsi = '';
+            $deskripsi = $_POST['deskripsiLama'];
         }else{
             $deskripsi = $_POST['deskripsi'];
         }
@@ -52,22 +69,34 @@
         if ($uploadOk == 0) {
             echo "Maaf File anda tidak dapat terupload";
         } else {
-            if($path == ''){
-                $path = $_POST['pathLama'];
+            if($path1 == ''){
+                $path1 = $_POST['path1Lama'];
             }else{
-                unlink($_POST['pathLama']);
+                unlink($_POST['path1Lama']);
             }
-            if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $path)) {
+            if($path2 == ''){
+                $path2 = $_POST['path2Lama'];
+            }else{
+                unlink($_POST['path2Lama']);
             }
-            $sql = "UPDATE coffins SET nama = '".$_POST['namaPeti']."', bahan = '".$bahanPeti."', deskripsi = '".$deskripsi."', path = '".$path."' WHERE id = ".$_POST['id']."";
+            if (move_uploaded_file($_FILES["gambar2"]["tmp_name"], $path2)) {
+            }else{
+              echo 'ini gak bisa masuk file karena null1';
+            }
+            if (move_uploaded_file($_FILES["gambar1"]["tmp_name"], $path1)) {
+            }else{
+              echo 'ini gak bisa masuk file karena null2';
+              $path1 = $path2;
+              $path2 ='';
+            }
+            $sql = "UPDATE services SET judul = '".$judul."', deskripsi = '".$deskripsi."', path1 = '".$path1."', path2 = '".$path2."' WHERE id = ".$_POST['id']."";
             $hasil = mysqli_query($con,$sql);
-            header("Location: peti.php");
+            header("Location: service.php");
     }
 }
 	
 	
 	include_once("commons/header.php");
-	include_once("../assets/small/addPeti.php");
 ?>
 <html lang="en">
 <head>
@@ -78,16 +107,19 @@
     
     <link rel="stylesheet" href="../assets/fontawesome-free-6.2.0-web/css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Peti</title>
+    <title>Layanan</title>
     <script>
-        function preview() {
-            frame.src = URL.createObjectURL(event.target.files[0]);
+        function preview1() {
+            frame1.src = URL.createObjectURL(event.target.files[0]);
+        }
+        function preview2() {
+            frame2.src = URL.createObjectURL(event.target.files[0]);
         }
     </script>
 </head>
 <body>
     <div class="judulProduk">
-        <H1>Edit Peti</H1>
+        <H1>Edit Layanan</H1>
 	</div>
 
 <?php 
@@ -95,20 +127,29 @@
 ?>
 	<div class="container">
     <div class="" id="formulir" tabindex="-1">
-        <form action="editPeti.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" id="idPeti" value="<?php echo $hasil['id']; ?>">
-            <input type="hidden" name="pathLama" id="pathLama" value="<?php echo $hasil['path']; ?>">
-            <label for="namaPeti" class="col-form-label">Nama Peti:</label>
-            <input type="text" class="form-control" name="namaPeti" <?php echo 'value="'.$hasil['nama'].'"'; ?> id="namaPeti">
-            <label for="bahan" class="col-form-label">Bahan Peti:</label>
-            <textarea class="form-control" name="bahanPeti" id="bahan"><?php echo ''.$hasil['bahan'].''; ?></textarea>
+        <form action="editLayanan.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" id="idLayanan" value="<?php echo $hasil['id']; ?>">
+            <input type="hidden" name="path1Lama" id="path1Lama" value="<?php echo $hasil['path1']; ?>">
+            <input type="hidden" name="judulLama" id="judulLama" value="<?php echo $hasil['judul']; ?>">
+            <input type="hidden" name="path2Lama" id="path2Lama" value="<?php echo $hasil['path2']; ?>">
+            <input type="hidden" name="deskripsiLama" id="deskripsiLama" value="<?php echo $hasil['deskripsi']; ?>">
+            <label for="judul" class="col-form-label">Judul:</label>
+            <input type="text" class="form-control" name="judul" <?php echo 'value="'.$hasil['judul'].'"'; ?> id="judul">
             <label for="deskripsi" class="col-form-label">Deskripsi:</label>
             <textarea class="form-control" name="deskripsi" id="deskripsi"><?php echo ''.$hasil['deskripsi'].''; ?></textarea>                    
-            <?php echo '<img id="frame" width="500" height="300" src="'.$hasil['path'].'" class="" alt="">'; ?>
-            <label for="gambar" class="col-form-label">Gambar:</label>
-            <input type="file" onchange="preview()" name="gambar" id="gambar">
+            <?php 
+                    echo '<img id="frame1" width="500" height="300" src="'.$hasil['path1'].'" class="" alt="">';
+            ?>
+            <label for="gambar1" class="col-form-label">Gambar1:</label>
+            <input type="file" onchange="preview1()" name="gambar1" id="gambar1"><br>
+
+            <?php
+                    echo '<img id="frame2" width="500" height="300" src="'.$hasil['path2'].'" class="" alt="">';   
+            ?>
+            <label for="gambar2" class="col-form-label">Gambar2:</label>
+            <input type="file" onchange="preview2()" name="gambar2" id="gambar2"><br>
             <button type="submit" class="btn btn-secondary" name="cancel">Close</button>
-            <button type="submit" class="btn btn-primary" name="simpanPeti">Simpan</button>
+            <button type="submit" class="btn btn-primary" name="simpanLayanan">Simpan</button>
         </form>  
     </div>
     </div>

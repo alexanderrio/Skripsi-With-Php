@@ -67,7 +67,6 @@
 	
 	
 	include_once("commons/header.php");
-	include_once("../assets/small/addPeti.php");
 ?>
 <html lang="en">
 <head>

@@ -49,14 +49,40 @@
             if($hasil['path2'] != ''){
               echo '<img alt="" src="'.$hasil['path2'].'" style="height:200px; width:300px">';
             }
-            echo '</td></tr>';
+            echo '</td>';
+         ?>
+            <td>
+                <form action="delete.php" class="hapusPeti" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" id="namaPeti" value="<?php echo $hasil['id']; ?>">
+                  <?php 
+                    if($hasil['path1'] != ''){
+                      echo '<input type="hidden" name="path1" id="path1" value="'.$hasil['path1'].'">';
+                    }
+                    if($hasil['path2'] != ''){
+                      echo '<input type="hidden" name="path2" id="path2" value="'.$hasil['path2'].'">';
+                    }    
+                  ?>
+                  
+                  <button name="hapusLayanan" type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <form action="editLayanan.php" class="editPeti" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" id="idPeti" value="<?php echo $hasil['id']; ?>">
+                  <?php 
+                    if($hasil['path1'] != ''){
+                      echo '<input type="hidden" name="path1" id="path1" value="'.$hasil['path1'].'">';
+                    }
+                    if($hasil['path2'] != ''){
+                      echo '<input type="hidden" name="path2" id="path2" value="'.$hasil['path2'].'">';
+                    }    
+                  ?>
+                  <button name="editLayanan" type="submit" class="btn btn-success">Edit</button>
+                </form>
+              </td>
+        <?php
+            echo '</tr>';
           }
         ?>
-            <!-- <form action="delete.php" class="hapusPeti" method="post" enctype="multipart/form-data">
-              <input type="hidden" name="id" id="namaPeti" value="<?php echo $hasil['id']; ?>">
-              <input type="hidden" name="path" id="path" value="<?php echo $hasil['path']; ?>">
-              <button name="hapusPeti" type="submit" class="btn btn-danger">Delete</button>
-                </form> -->
+            
             
                 </tbody>
           </table>
