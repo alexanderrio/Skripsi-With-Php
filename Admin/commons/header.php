@@ -13,10 +13,10 @@
                 <a class="nav-link active" href="produk.php">Produk</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Kontak</a>
+                <a class="nav-link" href="kontak.php">Kontak</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">FAQ</a>
+                <a class="nav-link" href="faq.php">FAQ</a>
               </li>
             </ul>
           </div>

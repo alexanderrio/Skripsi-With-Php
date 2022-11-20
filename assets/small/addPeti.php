@@ -30,7 +30,7 @@
                 <input type="file" name="gambar" id="gambar">
             </div>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="tambahPeti">Simpan</button>
+            <button type="submit" class="btn btn-primary" id="btn_submit" name="tambahPeti">Simpan</button>
         </form>  
     </div>
     </div>
