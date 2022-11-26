@@ -129,7 +129,7 @@
             <textarea class="form-control" name="deskripsi" id="deskripsi"><?php echo ''.$hasil['deskripsi'].''; ?></textarea>                    
             <?php echo '<img id="frame" width="500" height="300" src="'.$hasilGambar['path'].'" class="" alt="">'; ?>
             <label for="gambar" class="col-form-label">Gambar:</label>
-            <input type="file" onchange="preview()" name="gambar" id="gambar">
+            <input type="file" onchange="preview()" name="gambar" id="gambar"><br>
             <button type="submit" class="btn btn-secondary" name="cancel">Close</button>
             <button type="submit" class="btn btn-primary" name="simpanPeti">Simpan</button>
         </form>  
